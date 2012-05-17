@@ -1,0 +1,22 @@
+<h2>Create Account</h2>
+
+<%= simple_form_for(@account, :html => { :class => 'form-horizontal' }) do |f| %>
+  <div class="inputs">
+    <h3>Account Details:</h3>
+      <%= f.input :account_name, :required => true, :autofocus => true %>
+    
+    <%= f.fields_for :contacts do |contacts_form| %>
+    <h3>Contact Details:</h3>
+      <%= contacts_form.input :username, :required => true %>
+      <%= contacts_form.input :first_name, :required => true %>
+      <%= contacts_form.input :last_name, :required => true %>
+      <%= contacts_form.input :email, :required => true %>
+      <%= contacts_form.input :password, :required => true %>
+      <%= contacts_form.input :password_confirmation, :required => true %>
+    <% end %>
+  </div>
+  
+  <div class="form-actions">
+    <%= f.button :submit, "Create Account", :class => 'btn-primary' %>
+  </div>
+<% end %>

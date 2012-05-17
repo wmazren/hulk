@@ -35,12 +35,6 @@
               <li><%= link_to "Link2", "/path2"  %></li>
               <li><%= link_to "Link3", "/path3"  %></li>
             </ul>
-            <ul class="nav pull-right">
-              <li><a href="/accounts/new">Sign Up</a></li>
-              <li class="divider-vertical"></li>
-              <li><a href="/users/sign_in">Sign In</a></li>
-              </li>
-            </ul>
           </div><!--/.nav-collapse -->
         </div>
       </div>
