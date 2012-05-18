@@ -1,5 +1,6 @@
 Hulk::Application.routes.draw do
-  devise_for :users, :skip => [:registrations]
+  devise_for :users, :path_prefix => 'd', :skip => [:registrations]
+  resources :users
   devise_for :contacts
   
   resources :accounts
