@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   end
   
   def show
-    @account = Account.find(params[:id])
+    @user = User.find(params[:id])
   end
   
   def new
@@ -12,6 +12,7 @@ class UsersController < ApplicationController
   end
 
   def create
+    # @contact = current_contact
     @user = User.new(params[:user])
     if @user.save
       flash[:success] = "User created"
@@ -26,7 +27,7 @@ class UsersController < ApplicationController
   end
   
   def update
-    @account = current_contact.account.id
+    @account = Account.find_by_id(current_account)
     @user = User.find(params[:id])
     if @user.update_attributes(params[:user])
       flash[:notice] = "Successfully updated admin."

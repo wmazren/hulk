@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   end
   
   def show
-    @account = Account.find(params[:id])
+    @user = User.find(params[:id])
   end
   
   def new
@@ -12,6 +12,8 @@ class UsersController < ApplicationController
   end
 
   def create
+    # @contact = current_contact
+    @account = current_user.account_id
     @user = User.new(params[:user])
     if @user.save
       flash[:success] = "User created"

@@ -38,7 +38,7 @@
             <ul class="nav pull-right">
               <li><a href="/accounts/new">Sign Up</a></li>
               <li class="divider-vertical"></li>
-              <li><a href="/users/sign_in">Sign In</a></li>
+              <li><a href="/d/users/sign_in">Sign In</a></li>
               </li>
             </ul>
           </div><!--/.nav-collapse -->
@@ -46,14 +46,25 @@
       </div>
     </div>
     
-    <% flash.each do |name, msg| %>
-      <div class="alert alert-<%= name == :notice ? "success" : "error" %>">
-        <a class="close" data-dismiss="alert">×</a>
-        <%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
-      </div>
-    <% end %>
-
     <div class="container">
+    
+      <div id="user_nav">
+        <% if user_signed_in? %>
+          Signed in as <%= current_user.email %>.  Not you?
+          <%= link_to "Sign out", destroy_user_session_path, :method => :delete %> and
+          <%= link_to "Your Profile", edit_user_path(current_user) %>
+        <% else %>
+          <%= %>
+        <% end %>
+      </div>
+      
+      <% flash.each do |name, msg| %>
+        <div class="alert alert-<%= name == :notice ? "success" : "error" %>">
+          <a class="close" data-dismiss="alert">×</a>
+          <%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
+        </div>
+      <% end %>
+
       <div class="content">
         <div class="row">
            <div class="span9">
